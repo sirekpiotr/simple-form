@@ -1,14 +1,14 @@
 // Your tests go in here. Happy coding! 🤓
 
-import testData from '../fixtures/test-data.json'
+import { name, email, subject, message } from '../fixtures/test-data.json'
 
 describe('Ticket form submition', () => {
     beforeEach(() => {
         cy.visit('/')
-        cy.get('[data-cy=name]').type(testData.name)
-        cy.get('[data-cy=email]').type(testData.email)
-        cy.get('[data-cy=subject]').type(testData.subject)
-        cy.get('[data-cy=message]').type(testData.message)
+        cy.get('[data-cy=name]').type(name)
+        cy.get('[data-cy=email]').type(email)
+        cy.get('[data-cy=subject]').type(subject)
+        cy.get('[data-cy=message]').type(message)
     })
 
     it('Successful submition of the form', () => {
