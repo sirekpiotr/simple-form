@@ -24,9 +24,9 @@ function FormField(props: InputProps): JSX.Element {
         <React.Fragment>
             <label htmlFor={label}>{capitalizeFirstLetter(label)}:</label>
             {type === 'input' ? (
-                <input id={label} type={label} required />
+                <input id={label} type={label} data-cy={label} required />
             ) : (
-                <textarea id={label} required />
+                <textarea id={label} data-cy={label} required />
             )}
         </React.Fragment>
     )
@@ -58,7 +58,7 @@ function SimpleForm(props: FormProps): JSX.Element {
                     const { type, label } = field
                     return <FormField type={type} label={label} key={label} />
                 })}
-                <button type="submit" disabled={isPending}>
+                <button type="submit" data-cy="submit" disabled={isPending}>
                     Submit
                 </button>
             </form>

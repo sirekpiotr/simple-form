@@ -18,7 +18,9 @@ function App(): JSX.Element {
     if (ticketRequestStatus === 'success') {
         return (
             <div className="App">
-                <h1 className="success">Thank you!</h1>
+                <h1 className="success" data-cy="success">
+                    Thank you!
+                </h1>
             </div>
         )
     }
@@ -26,7 +28,9 @@ function App(): JSX.Element {
     if (ticketRequestStatus === 'fail') {
         return (
             <div className="App">
-                <h1 className="fail">Error!</h1>
+                <h1 className="fail" data-cy="fail">
+                    Error!
+                </h1>
             </div>
         )
     }
