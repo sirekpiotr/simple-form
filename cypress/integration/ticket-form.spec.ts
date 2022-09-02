@@ -2,7 +2,7 @@
 
 import { name, email, subject, message } from '../fixtures/test-data.json'
 
-describe('Ticket form submition', () => {
+describe('Ticket form submission', () => {
     beforeEach(() => {
         cy.visit('/')
         cy.get('[data-cy=name]').type(name)
@@ -11,27 +11,23 @@ describe('Ticket form submition', () => {
         cy.get('[data-cy=message]').type(message)
     })
 
-    it('Successful submition of the form', () => {
+    it('Successful submission of the form', () => {
         cy.intercept('POST', '*/tickets/new', {
             statusCode: 200,
-            body: {
-                id: 'ABCD',
-            },
-        }).as('mockedSuccessfulSubmitionRequest')
+            body: { id: 'ABCD' },
+        }).as('mockedSuccessfulSubmissionRequest')
         cy.get('[data-cy=submit]').click()
-        cy.wait('@mockedSuccessfulSubmitionRequest')
+        cy.wait('@mockedSuccessfulSubmissionRequest')
         cy.get('[data-cy=success]').should('be.visible')
     })
 
     it('Unsuccessful submition of the form', () => {
         cy.intercept('POST', '*/tickets/new', {
             statusCode: 500,
-            body: {
-                error: 'Internal server error',
-            },
-        }).as('mockedUnsuccessfulSubmitionRequest')
+            body: { error: 'Internal server error' },
+        }).as('mockedUnsuccessfulSubmissionRequest')
         cy.get('[data-cy=submit]').click()
-        cy.wait('@mockedUnsuccessfulSubmitionRequest')
+        cy.wait('@mockedUnsuccessfulSubmissionRequest')
         cy.get('[data-cy=fail]').should('be.visible')
     })
 })
